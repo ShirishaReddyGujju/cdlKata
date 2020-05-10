@@ -5,6 +5,7 @@ import main.model.OfferItem;
 import main.service.AddItemPricingRules;
 import main.service.AddOfferItemPricingRules;
 import main.service.CostGenerator;
+import main.service.impl.CostGeneratorImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CostGeneratorImplTest {
     private static List<Item> avaiableItems;
     private static List<OfferItem> offerItems;
-    private CostGenerator costGenerator;
+    CostGenerator costGenerator = new CostGeneratorImpl();
 
     @BeforeEach
     public void setUp() {
