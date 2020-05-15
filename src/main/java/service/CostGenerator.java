@@ -1,6 +1,5 @@
-package main.service;
+package service;
 
-import main.model.Item;
 
 public interface CostGenerator {
 

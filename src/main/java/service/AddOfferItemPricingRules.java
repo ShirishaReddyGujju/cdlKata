@@ -1,6 +1,6 @@
-package main.service;
+package service;
 
-import main.model.OfferItem;
+import model.OfferItem;
 
 import java.util.ArrayList;
 import java.util.List;

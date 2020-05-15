@@ -1,7 +1,7 @@
-package main;
 
-import main.service.CostGenerator;
-import main.service.impl.CostGeneratorImpl;
+
+import service.CostGenerator;
+import service.impl.CostGeneratorImpl;
 
 import java.util.Scanner;
 

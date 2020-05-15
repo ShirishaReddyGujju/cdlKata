@@ -1,10 +1,10 @@
-package main.service.impl;
+package service.impl;
 
-import main.model.Item;
-import main.model.OfferItem;
-import main.service.AddItemPricingRules;
-import main.service.AddOfferItemPricingRules;
-import main.service.CostGenerator;
+import model.Item;
+import model.OfferItem;
+import service.AddItemPricingRules;
+import service.AddOfferItemPricingRules;
+import service.CostGenerator;
 
 import java.util.ArrayList;
 import java.util.Collections;
