@@ -37,7 +37,7 @@ public class AddItemPricingRules {
                 System.out.println("Please Enter Price of " + itemName);
                 price = sc.nextDouble();
                 addItemPricing(itemName, price);
-                System.out.println("Please Enter Item Name");
+                System.out.println("Please Enter Item Name or press Exit");
             }
         }
 
