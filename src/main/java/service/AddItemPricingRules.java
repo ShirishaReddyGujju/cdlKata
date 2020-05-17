@@ -29,7 +29,8 @@ public class AddItemPricingRules {
         while(sc.hasNext()){
             itemName = sc.next();
             if (itemName.equalsIgnoreCase("exit")) {
-                System.out.println("available Items: "+ getItemPricingList());
+                System.out.println("Available Items are ");
+                getItemPricingList().forEach(item -> System.out.println(item.getName() + " for "+ item.getPrice()));
                 return;
             }
             else {

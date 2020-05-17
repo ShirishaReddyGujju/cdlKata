@@ -32,10 +32,11 @@ public class AddOfferItemPricingRules {
         while(sc.hasNext()){
             itemName = sc.next();
             if (itemName.equalsIgnoreCase("exit")) {
-                System.out.println("available Items: "+ getOfferItemRules());
+                System.out.println("Available Items in Offer are ");
+                getOfferItemRules().forEach(offerItem -> System.out.println(offerItem.getGroup() + " " + offerItem.getItemName() + "'s for " + offerItem.getPrice()));
                 return;
             }
-            System.out.println("Please Enter No of "+ itemName + "in offer");
+            System.out.println("Please Enter No of "+ itemName + " in offer");
             noOfItems = sc.nextInt();
             System.out.println("Please Enter Offer Price of "+ noOfItems + " " + itemName);
             price = sc.nextDouble();
