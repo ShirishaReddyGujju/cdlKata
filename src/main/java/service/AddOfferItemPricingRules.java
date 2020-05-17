@@ -19,4 +19,11 @@ public class AddOfferItemPricingRules {
         offerItems.add(offerItem2);
         return offerItems;
     }
+
+    /**
+     * Receives the new Offer pricing rules from the command line
+     * Adds the offer details to the pricing system
+     */
+    public static void addOfferItemPricingRules() {
+    }
 }

@@ -1,5 +1,8 @@
 
 
+import model.Item;
+import service.AddItemPricingRules;
+import service.AddOfferItemPricingRules;
 import service.CostGenerator;
 import service.impl.CostGeneratorImpl;
 
@@ -10,6 +13,8 @@ public class ItemController {
 
         public static void main(String args[]){
             double totalCost =0;
+            AddItemPricingRules.addItemPricingRules();
+            AddOfferItemPricingRules.addOfferItemPricingRules();
             String scannedItem;
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Please Scan your Item");
@@ -25,4 +30,8 @@ public class ItemController {
                     }
                 }
         }
+
+
+
+
 }

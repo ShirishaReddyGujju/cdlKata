@@ -4,8 +4,10 @@ import model.Item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class AddItemPricingRules {
+    List<Item> items = new ArrayList<>();
 
     /**
      * This method used to add the available stock items and their pricing values
@@ -24,4 +26,14 @@ public class AddItemPricingRules {
 
         return items;
     }
+
+    /**
+     * Receives the new pricing rules from the command line
+     * Adds the items to the pricing system
+     */
+    public static void addItemPricingRules() {
+
+
+    }
+
 }
