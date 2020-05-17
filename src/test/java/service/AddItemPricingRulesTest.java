@@ -9,10 +9,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AddItemPricingRulesTest {
+    AddItemPricingRules itemPricingRules = new AddItemPricingRules();
 
     @Test
-    void getItemPricing(){
-        List<Item> availableItems = AddItemPricingRules.getItemPricing();
+    void addItemPricingRules(){
+        itemPricingRules.addItemPricing("A",50);
+        itemPricingRules.addItemPricing("B",30);
+        itemPricingRules.addItemPricing("C",20);
+        itemPricingRules.addItemPricing("D",15);
+        List<Item> availableItems = itemPricingRules.getItemPricingList();
 
         assertAll(() -> assertNotNull(availableItems),
                   () -> assertEquals(availableItems.size(), 4),
