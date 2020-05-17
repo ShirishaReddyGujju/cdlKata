@@ -13,9 +13,9 @@ import java.util.List;
 public class CostGeneratorImpl implements CostGenerator {
     List<String> scannedItems = new ArrayList<>();
 
-    private static List<Item> avaiableItems = AddItemPricingRules.getItemPricing();
+    private List<Item> availableItems;
 
-    private static List<OfferItem> offerItems = AddOfferItemPricingRules.getOfferItemRules();
+    private List<OfferItem> offerItems;
 
     private double totalCost = 0;
 
@@ -26,12 +26,24 @@ public class CostGeneratorImpl implements CostGenerator {
      */
     @Override
     public double addItemAndGetTotalCost(String item) {
+        getPricingDetails();
         scannedItems.add(item);
-        Item product =
-            avaiableItems.stream().filter(availableItem -> availableItem.getName().equalsIgnoreCase(item)).findFirst().get();
+        Item product = availableItems.stream()
+                                     .filter(availableItem -> availableItem.getName().equalsIgnoreCase(item))
+                                     .findFirst().get();
 
         OfferItem offerItem = getOfferedItem(product);
         return getTotalCost(product, offerItem);
+    }
+
+    /**
+     * gets the exiting Item pricing details and Offer details
+     */
+    private void getPricingDetails() {
+        AddItemPricingRules itemPricingRules = new AddItemPricingRules();
+        availableItems = itemPricingRules.getItemPricingList();
+        AddOfferItemPricingRules offerItemPricingRules = new AddOfferItemPricingRules();
+        offerItems = offerItemPricingRules.getOfferItemRules();
     }
 
     /**
