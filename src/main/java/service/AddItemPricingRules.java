@@ -7,11 +7,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AddItemPricingRules {
-    List<Item> items = new ArrayList<>();
+    static List<Item> items = new ArrayList<>();
 
     /**
-     * This method used to add the available stock items and their pricing values
-     * @return list of available items
+     *  @return list of available items
      */
     public List<Item> getItemPricingList() {
         return items;

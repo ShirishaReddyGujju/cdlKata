@@ -16,10 +16,27 @@ class CostGeneratorImplTest {
     private static List<OfferItem> offerItems;
     CostGenerator costGenerator = new CostGeneratorImpl();
 
+
     @BeforeEach
     public void setUp() {
-        avaiableItems = AddItemPricingRules.getItemPricing();
-        offerItems = AddOfferItemPricingRules.getOfferItemRules();
+        generateMockPricingDetails();
+    }
+
+    /**
+     * Mock data to run the tests for CostGenerator
+     */
+    private void generateMockPricingDetails() {
+        AddItemPricingRules itemPricingRules = new AddItemPricingRules();
+        itemPricingRules.addItemPricing("A",50);
+        itemPricingRules.addItemPricing("B",30);
+        itemPricingRules.addItemPricing("C",20);
+        itemPricingRules.addItemPricing("D",15);
+        avaiableItems  = itemPricingRules.getItemPricingList();
+
+        AddOfferItemPricingRules offerItemPricingRules = new AddOfferItemPricingRules();
+        offerItemPricingRules.addOfferItemPricing("A", 3, 130);
+        offerItemPricingRules.addOfferItemPricing("B", 2, 45);
+        offerItems = offerItemPricingRules.getOfferItemRules();
     }
 
     @Test

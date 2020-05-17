@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class AddOfferItemPricingRules {
 
-    ArrayList<OfferItem> offerItems = new ArrayList<>();
+    static ArrayList<OfferItem> offerItems = new ArrayList<>();
 
     /**
      * This method used to add the offers available on items and their details
