@@ -2,6 +2,7 @@ package service;
 
 import model.Item;
 import model.OfferItem;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import service.impl.CostGeneratorImpl;
@@ -17,15 +18,15 @@ class CostGeneratorImplTest {
     CostGenerator costGenerator = new CostGeneratorImpl();
 
 
-    @BeforeEach
-    public void setUp() {
+    @BeforeAll
+    public static void setUp() {
         generateMockPricingDetails();
     }
 
     /**
      * Mock data to run the tests for CostGenerator
      */
-    private void generateMockPricingDetails() {
+    private static void generateMockPricingDetails() {
         AddItemPricingRules itemPricingRules = new AddItemPricingRules();
         itemPricingRules.addItemPricing("A",50);
         itemPricingRules.addItemPricing("B",30);
@@ -79,5 +80,27 @@ class CostGeneratorImplTest {
         expectedCost = 145;
         actualCost = costGenerator.addItemAndGetTotalCost(itemsToAdd.get(3));
         assertEquals(expectedCost, actualCost, "Incorrect basket total price, Offer not applied");
+    }
+
+    @Test
+    void validateIfItemExists() {
+        boolean isItemExist;
+        List<String> itemsToAdd = new ArrayList<>();
+        itemsToAdd.add("A");
+        itemsToAdd.add("B");
+        itemsToAdd.add("G");
+
+        //Adding 1st item to the cart
+        isItemExist = costGenerator.validateIfItemExists(itemsToAdd.get(0));
+        assertEquals(true, isItemExist, "Incorrect basket Items");
+
+        //Adding 2nd item to the cart
+        isItemExist = costGenerator.validateIfItemExists(itemsToAdd.get(1));
+        assertEquals(true, isItemExist, "Incorrect basket total price");
+
+        //Adding 3rd item to the cart
+        isItemExist = costGenerator.validateIfItemExists(itemsToAdd.get(2));
+        assertEquals(false, isItemExist, "Incorrect basket total price");
+
     }
 }
