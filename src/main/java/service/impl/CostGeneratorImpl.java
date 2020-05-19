@@ -37,6 +37,20 @@ public class CostGeneratorImpl implements CostGenerator {
     }
 
     /**
+     * Validates if the item exist or not
+     * @param item
+     * @return true or false 
+     */
+    @Override
+    public boolean validateIfItemExists(String item) {
+        getPricingDetails();
+        Item product = availableItems.stream()
+                                     .filter(availableItem -> availableItem.getName().equalsIgnoreCase(item))
+                                     .findFirst().orElse(null);
+        return (product!=null) ? true : false;
+    }
+
+    /**
      * gets the exiting Item pricing details and Offer details
      */
     private void getPricingDetails() {
