@@ -28,19 +28,29 @@ public class AddItemPricingRules {
         System.out.println("Please Enter Item Name");
         while(sc.hasNext()){
             itemName = sc.next();
+            Item availableItem = validateIfItemAlreadyExist(itemName);
             if (itemName.equalsIgnoreCase("exit")) {
-                System.out.println("Available Items are ");
-                getItemPricingList().forEach(item -> System.out.println(item.getName() + " for "+ item.getPrice()));
                 return;
             }
+            else if(availableItem != null) {
+                System.out.println("Item " + availableItem.getName()+ " with price " + availableItem.getPrice()+ " is already available");
+                System.out.println("Please Enter New Item Name or press Exit");
+            }
             else {
-                System.out.println("Please Enter Price of " + itemName);
+                System.out.println("Please Enter Price of " + itemName+ " in pence");
                 price = sc.nextDouble();
                 addItemPricing(itemName, price);
-                System.out.println("Please Enter Item Name or press Exit");
+                System.out.println("Available Items are ");
+                getItemPricingList().forEach(item -> System.out.println(item.getName() + " for "+ item.getPrice()));
+                System.out.println("Please Enter New Item Name or press Exit");
             }
         }
 
+    }
+
+    public Item validateIfItemAlreadyExist(String inputItem) {
+        Item availableItem = items.stream().filter(item -> item.getName().equalsIgnoreCase(inputItem)).findFirst().orElse(null);
+        return availableItem;
     }
 
     public void addItemPricing(String itemName, double price){
